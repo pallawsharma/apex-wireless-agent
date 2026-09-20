@@ -1,0 +1,51 @@
+{
+  "name": "apex-wireless-hybrid-frontend",
+  "displayName": "Apex Wireless Hybrid Voice Gateway",
+  "rootAgent": "steering_agent",
+  "modelSettings": {
+    "model": "gemini-3.1-flash-live"
+  },
+  "globalInstruction": "global_instruction.txt",
+  "audioProcessingConfig": {
+    "synthesizeSpeechConfigs": {
+      "en-US": {
+        "voice": "en-US-Chirp3-HD-Erinome"
+      }
+    },
+    "inactivityTimeout": "10s"
+  },
+  "timeZoneSettings": {
+    "timeZone": "America/New_York"
+  },
+  "variableDeclarations": [
+    {
+      "name": "caller_phone_number",
+      "description": "Inbound caller telephone number from ANI.",
+      "schema": {
+        "type": "STRING"
+      }
+    },
+    {
+      "name": "customer_name",
+      "description": "Customer name associated with account.",
+      "schema": {
+        "type": "STRING",
+        "default": "Valued Customer"
+      }
+    },
+    {
+      "name": "account_id",
+      "description": "Customer account identifier.",
+      "schema": {
+        "type": "STRING"
+      }
+    },
+    {
+      "name": "last_active_agent",
+      "description": "GEAP sub-agent that handled the request.",
+      "schema": {
+        "type": "STRING"
+      }
+    }
+  ]
+}

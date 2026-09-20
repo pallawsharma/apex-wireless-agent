@@ -1,0 +1,6 @@
+{
+  "name": "geap_concierge",
+  "displayName": "geap_concierge",
+  "description": "Delegates complex inquiries to the GEAP Multi-Agent backend microservice (device sales, family plans, store pickup, diagnostics, RMAs, billing).",
+  "openApiSpec": "openapi_spec.yaml"
+}

@@ -1,0 +1,48 @@
+App "apex_wireless_hybrid" can transfer between agents but has no context_cache_config. Every transfer swaps the system instruction and the tool set, so the request prefix changes and the whole prompt is re-sent uncached after each transfer. Set context_cache_config on the app to give each agent its own cache.
+/usr/local/google/home/pallaws/.venvs/ai-agents/lib/python3.13/site-packages/google/adk/tools/transfer_to_agent_tool.py:106: UserWarning: [EXPERIMENTAL] feature FeatureName.JSON_SCHEMA_FOR_FUNC_DECL is enabled.
+  function_decl = super()._get_declaration()
+================================================================================
+STARTING HYBRID ARCHITECTURE EVALUATION (GECX Voice Edge + GEAP Multi-Agent)
+================================================================================
+
+[Turn 1] Mode: OPENAPI | Sales Inquiry: Google Pixel 9 Pro Fold pricing & family discounts
+GECX Inbound Speech: "How much is the Google Pixel 9 Pro Fold and what are your family plan rates?"
+GEAP Delegated Agent: [sales_agent]
+Python Tools Executed: ['transfer_to_agent', 'catalog_search', 'catalog_search']
+GEAP Reply for Telephony TTS: "The Google Pixel 9 Pro Fold is one thousand seven hundred ninety-nine dollars retail, or forty-nine dollars and ninety-seven cents per month to finance.
+
+For our family plan rates, the Unlimited Starter plan is thirty-five dollars per line per month when you have four or more lines."
+>>> STATUS: PASSED
+
+[Turn 2] Mode: OPENAPI | Store Reservation: Pixel 9 Pro pickup near 94105 for Alex Rivera
+GECX Inbound Speech: "Can I reserve a Pixel 9 Pro for store pickup near 94105? My name is Alex Rivera."
+GEAP Delegated Agent: [sales_agent]
+Python Tools Executed: ['find_nearby_stores', 'reserve_store_pickup']
+GEAP Reply for Telephony TTS: "Absolutely Alex. I have reserved the Google Pixel 9 Pro for you at our Downtown San Francisco store located at 750 Market Street. Your reservation number is R E S 4 9 2 1 1. It will be held for forty-eight hours, and please remember to bring a valid government photo ID for pickup."
+>>> STATUS: PASSED
+
+[Turn 3] Mode: OPENAPI | Support Diagnostics: Slow data speeds on iPhone 15 Pro
+GECX Inbound Speech: "My data connection has been really slow today. Can you run diagnostics on my line?"
+GEAP Delegated Agent: [support_agent]
+Python Tools Executed: ['transfer_to_agent', 'run_device_diagnostics']
+GEAP Reply for Telephony TTS: "I have completed the diagnostics for your Apple iPhone 15 Pro. The results show that your eSIM is active and provisioned, and you are connected to 5G Ultra Wideband with 5 out of 5 bars of signal strength. The cell towers are operational with no outages, and there is no throttling on your line. You have Unlimited Premium High-Speed data, and you have used 24.3 gigabytes of data.
+
+To help improve your data speed, I recommend that you toggle Airplane mode on for 10 seconds and then turn it off. Alternatively, you can reset your Network Settings by going to Settings, then General, then Transfer or Reset iPhone."
+>>> STATUS: PASSED
+
+[Turn 4] Mode: OPENAPI | Returns & Restocking: Return opened Pixel 9 Pro at SF store
+GECX Inbound Speech: "I bought a Pixel 9 Pro last week, opened it, and want to return it at your SF store. What is the fee?"
+GEAP Delegated Agent: [support_agent]
+Python Tools Executed: ['check_return_eligibility']
+GEAP Reply for Telephony TTS: "Your Google Pixel 9 Pro is eligible for return, as it has been 5 days since your purchase, which is within our 14-day return window. Since the box has been opened, there is a standard 35 dollar restocking fee. Your estimated refund will be 964 dollars."
+>>> STATUS: PASSED
+
+[Turn 5] Mode: CX_WEBHOOK | CX Fulfillment Webhook: Itemized bill explanation and due date
+GECX Inbound Speech: "Why is my current bill $85.50 and when is it due?"
+CX Webhook Reply for Telephony TTS: "Your current bill is eighty-five dollars and fifty cents, and it is due on October first. This amount includes your Unlimited Plus plan for eighty dollars, with a ten dollar discount for AutoPay. You also have a nine dollar charge for Apex Care device protection and six dollars and fifty cents for government taxes and regulatory surcharges. Your AutoPay is scheduled to process this payment on the due date."
+Updated CX Session Parameters: ['customer_name', 'caller_phone_number', 'account_id', 'user_query', 'active_lines_count', 'current_plan', 'primary_device', 'is_authenticated', 'last_active_agent']
+>>> STATUS: PASSED
+
+================================================================================
+HYBRID EVALUATION COMPLETE: 5/5 Scenarios Passed (100%)
+================================================================================

@@ -1,0 +1,9 @@
+{
+  "name": "steering_agent",
+  "displayName": "steering_agent",
+  "description": "Telephony voice edge agent that greets callers and delegates enterprise requests to GEAP backend concierge.",
+  "instruction": "instruction.txt",
+  "tools": [
+    "geap_concierge"
+  ]
+}

@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: Apex Wireless GEAP Multi-Agent Concierge Service
+  description: Backend enterprise multi-agent engine orchestrating sales, diagnostics, returns, and billing for GECX telephony.
+  version: 1.0.0
+servers:
+  - url: https://apex-geap-backend-354292934503.us-central1.run.app
+    description: Production Cloud Run deployment
+  - url: http://localhost:8080
+    description: Local testing server
+
+paths:
+  /api/dispatch:
+    post:
+      summary: Dispatch customer query to GEAP Multi-Agent Concierge
+      description: Delegates user intent to the hierarchical ADK 2.0 network (sales_agent or support_agent) and returns formatted speech and updated state.
+      operationId: dispatchQuery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - query
+              properties:
+                query:
+                  type: string
+                  description: The verbatim speech or question from the customer.
+                session_id:
+                  type: string
+                  description: Dialogflow CX session ID or telephony call UUID.
+                caller_phone_number:
+                  type: string
+                  description: Customer ANI phone number (e.g. +14155550199).
+                customer_name:
+                  type: string
+                  description: Verified customer name if authenticated.
+                account_id:
+                  type: string
+                  description: Customer account identifier (e.g. ACC-1001).
+      responses:
+        '200':
+          description: Successful delegation response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  reply_text:
+                    type: string
+                    description: The spoken response to deliver to the customer over telephony.
+                  active_agent:
+                    type: string
+                    description: Sub-agent that resolved the request (sales_agent or support_agent).
+                  tool_calls_executed:
+                    type: array
+                    items:
+                      type: string
+                    description: List of Python tools called during execution.
+                  updated_session_state:
+                    type: object
+                    description: Key-value session state parameters to persist.
